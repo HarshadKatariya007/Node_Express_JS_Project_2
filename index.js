@@ -1,4 +1,4 @@
-const express  = require('express')
+const express  = require("express")
 const App =  express()
 
 App.use(express.json());
@@ -14,18 +14,19 @@ App.post("/", (req,res) =>
 {
     console.log(req.body);
     Arry.push(req.body)
-    res.send("Data Is Post")
+    res.send(Arry)
 })
 
 App.delete("/:id", (req,res) =>
 {
     console.log(req.params);
-    res.send("Data Is Delete");
+    res.send(Arry);
     let {id} = req.params;
     Arry.splice(id,1)
 })
-
-App.listen(8000,() =>
+App.patch("/:id",(req,res) =>
 {
-    console.log("Server Is Runnig On Port 8000");
+    let {id} = req.params
+    Arry[id] = {...Arry[id],...req.body}
+    res.send(Arry)
 })
