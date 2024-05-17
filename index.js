@@ -30,3 +30,8 @@ App.patch("/:id",(req,res) =>
     Arry[id] = {...Arry[id],...req.body}
     res.send(Arry)
 })
+
+App.listen(8000,() =>
+{
+    console.log("Server Is Runnig On Port 8000");
+})
